@@ -8,7 +8,7 @@ import os
 import time
 from contextlib import contextmanager
 from . import shaper_calibrate
-
+import tempfile
 
 class TestAxis:
     def __init__(self, axis=None, vib_dir=None):
@@ -519,7 +519,7 @@ class ResonanceTester:
         if point:
             name += "_%.3f_%.3f_%.3f" % (point[0], point[1], point[2])
         name += "_" + name_suffix
-        return os.path.join("/tmp", name + ".csv")
+        return os.path.join(tempfile.gettempdir(), name + ".csv")
 
     def save_calibration_data(
         self,
